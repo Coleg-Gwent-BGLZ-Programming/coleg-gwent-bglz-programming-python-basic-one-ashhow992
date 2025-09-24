@@ -23,3 +23,36 @@
 
 # TODO: Step 8 - Call the function and print the summary
 # Hint: Pass the dictionary to the function and print the result
+
+
+
+from datetime import datetime
+name = input("Enter your name: ")
+age = int(input("Enter your age: "))
+hobbies = []
+for i in range(3):
+    hobby = input(f"Enter hobby {i+1}: ")
+    hobbies.append(hobby)
+user_data = {
+    "name": name,
+    "age": age,
+    "hobbies": hobbies
+}
+print(f"\nName: {user_data['name']}")
+print(f"Age: {user_data['age']}")
+print(f"Hobbies: {', '.join(user_data['hobbies'])}")
+hobby_set = set(hobbies)
+print(f"Hobbies (unique): {', '.join(hobby_set)}")
+current_year = datetime.now().year
+birth_year = current_year - age
+years = (birth_year, current_year)
+print(f"Birth year: {birth_year}, Current year: {current_year}")
+def create_summary(data):
+    return (
+        f"{data['name']} is {data['age']} years old. "
+        f"They enjoy {', '.join(set(data['hobbies']))}. "
+        f"They were born in {years[0]} and the current year is {years[1]}."
+    )
+summary = create_summary(user_data)
+print("\nSummary:")
+print(summary)
